@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block main_content %}
+	<!-- gray bg -->	
+	<section class="container tm-home-section-1" id="more">
+		<div class="section-margin-top">
+			<div class="row">				
+				<div class="tm-section-header">
+					<div class="col-lg-3 col-md-3 col-sm-3"><hr></div>
+					<div class="col-lg-6 col-md-6 col-sm-6"><h2 class="tm-section-title">Achados</h2></div>
+					<div class="col-lg-3 col-md-3 col-sm-3"><hr></div>	
+				</div>
+			</div>
+			<div class="row">
+			{% for achado in achados %}
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
+				<div class="tm-home-box-2">						
+					<img src="{{achado.photo.url}}" style="width: 254px; height: 185px;" alt="image" class="img-responsive">
+					<h3>{{achado.nomecompleto}}</h3>
+					<p class="tm-date">{{achado.tipo_item}}</p>
+					<div class="tm-home-box-2-container">
+						<a href="#" class="tm-home-box-2-link"></a>
+						<a href="{% url 'core:detalhes_achado' pk=achado.id %}" class="tm-home-box-2-link"><span class="tm-home-box-2-description">Detalhes</span></a>
+						<a href="#" class="tm-home-box-2-link"><i class="fa fa-edit tm-home-box-2-icon border-left"></i></a>
+					</div>
+					<br>
+					<br>
+				</div>
+			</div>
+			{% endfor %}		
+		</div>
+	</section>		
+{% endblock %}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Relatorio de Perdidos</title>
+</head>
+<body style="font-family: 'Helvetica', sans-serif;">
+    <h1 class="text-center">Perdidos</h1>
+    <h4 class="text-left">Relatório de Itens Perdidos</h4>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Categoria</th>
+              <th>Data</th>
+              <th>Bairro</th>
+              <th>Declarante</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for perdido in perdidos %}
+              <tr>
+                <td>{{ perdido.pk }}</td>
+                <td>{{ perdido.nomecompleto }}</td>
+                <td>{{ perdido.tipo_item }}</td>
+                <td>{{ perdido.data_perdido }}</td>
+                <td>{{ perdido.bairro }}</td>
+                <td>{{ perdido.declarante }}</td>
+              </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+    <footer>
+      <div class="card" style="height: 120px">
+        <h6 class="card-header" style="font-weight: bold;">Documento assinado eletronicamente por:</h6>
+        <div class="card-body">
+          <div class="container"> 
+            <div class="row">
+              <div class="col">
+                <h6 class="card-title">Caike da Silva Reis</h6>
+                <h6 style="font-size: 12px;" class="card-text">Desenvolvedor de Software</h6>
+                <h6 style="font-size: 12px;" class="card-text">Igreja Batista de Corrente</h6>
+              </div>
+              <div class="col text-end">
+                <img class="text-end" style="height: 55px;" src="https://i0.wp.com/larmontessori.com/wp-content/uploads/2019/05/Assinatura.png?resize=300%2C91&ssl=1">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div id="grafico" width="400px" height="400px"></div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.esm.js" integrity="sha512-IPqefcmFCuGcYxl/uIjvyCXwh5T9+EB2MFT7W9RUZd20d7PLfgdT975xdhyesvdXH6Au8SyXOw1236LY1lFl5Q==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.esm.min.js" integrity="sha512-2Vi/lCX8NaXlAhzc28RAoteYAiJVoz4y3Xq/IpHQCw7KU25I34fDqJSVSUml2tQRVYFnf3IMy6O59zKJh79hiw==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js" integrity="sha512-b3xr4frvDIeyC3gqR1/iOi6T+m3pLlQyXNuvn5FiRrrKiMUJK3du2QqZbCywH6JxS5EOfW0DY0M6WwdXFbCBLQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/helpers.esm.js" integrity="sha512-/2SCtwX/TWXQ8kJN8MhCXL5GQJkBhh5J184Uy/totMp+1pFXTQhV/hMMYHuSl+juR5WO9i11AvywRgYFotRIug==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/helpers.esm.min.js" integrity="sha512-b3xZ1Eh852+/Ltha4XJd59YP2d+I+B6NPdB4H+Wns29GX9x5pLwlp8jnQtJYog3d5Xk1SWvhT2lgJDDBvpV0ow==" crossorigin="anonymous"></script>
+
+<script>
+  var ctx = document.getElementById('grafico');
+  var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+  </script>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block main_content %}
+    <!-- white bg -->
+	<section class="tm-white-bg section-padding-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="tm-section-header section-margin-top">
+					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>
+					<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">{{detalhe.tipo_item}}</h2></div>
+					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>	
+				</div>				
+			</div>
+			<div class="row">
+				<!-- Testimonial -->
+				<div class="col-lg-12">
+					<div class="tm-what-we-do">
+						<div class="tm-about-box-2 margin-bottom-30">
+							<img src="{{detalhe.photo.url}}" style="height: 600px; width: 100%" alt="image" class="tm-about-box-2-img">
+							<div class="tm-about-box-2-text">
+								<br>
+								<h3 class="tm-about-box-2-title">{{detalhe}}</h3>
+				                <p class="tm-about-box-2-description gray-text">{{detalhe.descricao}}</p>
+				                <p class="tm-about-box">{{detalhe.data_registro}}</p>	
+							</div>		                
+						</div>
+				
+					</div>
+				</div>							
+			</div>			
+		</div>
+	</section>
+{% endblock %}
