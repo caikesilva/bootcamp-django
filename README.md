@@ -6,25 +6,25 @@
 ```python3 -m venv venv```
 
 #### Ative o ambiente virtual
-```source venv/Scripts/activate```
+```source venv/bin/activate```
 
-#### Acessar pagina projeto
+#### Acessar pasta do projeto
 ``` cd bootcamp-django```
 
 #### Instalar dependencias
 ```pip install -r requirements.txt```
 
-#### Rodar migrações
+#### Executa migrações
 ```python manage.py migrate```
 
-#### Criando superusuario
+#### Cria superusuarios
 ```python manage.py createsuperuser```
 
 #### Subindo servidor
 ```python manage.py runserver```
 
-#### Acessando admin
+#### Acessa admin
 ```http://127.0.0.1:8000/admin/```
 
-#### Acessar o home
+#### Acessa home
 ```http://127.0.0.1:8000/```
